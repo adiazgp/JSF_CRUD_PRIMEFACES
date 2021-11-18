@@ -1,0 +1,40 @@
+CREATE SCHEMA `nexosdb` ;
+
+--------------------------------------------------------------------------------------------------------
+
+CREATE TABLE `departamentos` (
+  `id_departamento` int NOT NULL AUTO_INCREMENT,
+  `departamento_codigo` char(2) NOT NULL DEFAULT '00',
+  `departamento_nombre` char(80) NOT NULL DEFAULT 'S/N',
+  `fecha_hora_crea` datetime DEFAULT (cast(0 as date)),
+  `fecha_hora_modifica` datetime DEFAULT (cast(0 as date)),
+  PRIMARY KEY (`id_departamento`),
+  UNIQUE KEY `id_departamento_UNIQUE` (`id_departamento`),
+  UNIQUE KEY `departamento_codigo_UNIQUE` (`departamento_codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+----------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE `empleados` (
+  `Id_empleados` int NOT NULL AUTO_INCREMENT,
+  `documento_tipo` char(2) NOT NULL,
+  `documento_numero` char(20) NOT NULL,
+  `nombres` char(80) NOT NULL,
+  `apellidos` char(80) NOT NULL,
+  `id_departamento` int NOT NULL,
+  `ciudad` int NOT NULL,
+  `direccion` char(80) NOT NULL,
+  `correo_electronico` char(80) NOT NULL,
+  `telefono` char(15) NOT NULL,
+  `fecha_hora_crea` datetime NOT NULL,
+  `fecha_hora_modifica` datetime NOT NULL,
+  PRIMARY KEY (`Id_empleados`),
+  UNIQUE KEY `Id_empleados_UNIQUE` (`Id_empleados`),
+  UNIQUE KEY `documento_numero_UNIQUE` (`documento_numero`),
+  KEY `FKrnmesv4tqvbufe58d30ygfest` (`id_departamento`),
+  CONSTRAINT `FKrnmesv4tqvbufe58d30ygfest` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id_departamento`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+

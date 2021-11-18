@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+ <meta charset="utf-8" name="viewport"
+  content="width=device-width, initial-scale=1"
+  http-equiv="X-UA-Conpatible" />
+ <title>CRUD_DEPARTAMENTOS</title>
+</h:head>
+<h:body>
+ <h2>
+  <h:outputText value="Lista Departamentos"></h:outputText>
+ </h2>
+<h:form>
+  <h:commandButton action="#{departamentoBean.nuevo()}" value="Nuevo Departamento"></h:commandButton>
+ 
+  <h:dataTable value="#{departamentoBean.obtenerDepartamentos()}" var="departamento"
+   border="1">
+   <h:column>
+    <f:facet name="header">Id</f:facet>
+    <h:outputText value="#{departamento.idDepartamento}"></h:outputText>
+   </h:column>
+   <h:column>
+    <f:facet name="header">Codigo:</f:facet>
+    <h:outputText value="#{departamento.departamentoCodigo}"></h:outputText>
+   </h:column>
+   <h:column>
+    <f:facet name="header">Nombre:</f:facet>
+    <h:outputText value="#{departamento.departamentoNombre}"></h:outputText>
+   </h:column>
+   <h:column>
+    <f:facet name="header">Fecha_Creacion:</f:facet>
+    <h:outputText value="#{departamento.fechaHoraCrea}"></h:outputText>
+   </h:column>
+ 
+   <h:column>
+    <f:facet name="header">Fecha_Modificacion:</f:facet>
+    <h:outputText value="#{departamento.fechaHoraModifica}"></h:outputText>
+   </h:column>
+   <h:column>
+    <f:facet name="header">Editar</f:facet>
+    <h:commandButton action="#{departamentoBean.editar(departamento.idDepartamento)}" value="Editar"></h:commandButton>
+   </h:column>
+   <h:column>
+    <f:facet name="header">Eliminar</f:facet>
+    <h:commandButton action="#{departamentoBean.eliminar(departamento.idDepartamento)}" value="Eliminar"></h:commandButton>
+   </h:column>
+  </h:dataTable>
+ </h:form>
+</h:body>
+</html>

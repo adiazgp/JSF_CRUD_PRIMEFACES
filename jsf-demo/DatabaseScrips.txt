@@ -26,14 +26,14 @@ CREATE TABLE `empleados` (
   `direccion` char(80) NOT NULL,
   `correo_electronico` char(80) NOT NULL,
   `telefono` char(15) NOT NULL,
-  `fecha_hora_crea` datetime NOT NULL,
-  `fecha_hora_modifica` datetime NOT NULL,
+  `fecha_hora_crea` datetime DEFAULT '1000-01-01 00:00:00',
+  `fecha_hora_modifica` datetime DEFAULT '1000-01-01 00:00:00',
   PRIMARY KEY (`Id_empleados`),
   UNIQUE KEY `Id_empleados_UNIQUE` (`Id_empleados`),
   UNIQUE KEY `documento_numero_UNIQUE` (`documento_numero`),
   KEY `FKrnmesv4tqvbufe58d30ygfest` (`id_departamento`),
   CONSTRAINT `FKrnmesv4tqvbufe58d30ygfest` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id_departamento`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 --------------------------------------------------------------------------------------------------------------------------------------

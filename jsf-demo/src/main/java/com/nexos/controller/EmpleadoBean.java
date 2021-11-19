@@ -128,17 +128,36 @@ public class EmpleadoBean {
         return "editarEmpleado.xhtml";
     }
 
+    public String muestraEliminar(Integer id) {
+        EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+        Empleado c = new Empleado();
+        c = empleadoDAO.buscar(id);
+        System.out.println("******************************************");
+        System.out.println(c);
+
+        Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+        sessionMap.put("empleado", c);
+        return "eliminarEmpleado.xhtml";
+    }
+    
     public String actualizar(Empleado empleado) {
         // guarda la fecha de actualizacion
         try {
-            Date fechaActual = new Date();
-            empleado.setFactualizar(new java.sql.Date(fechaActual.getTime()));
-
-            EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-            empleadoDAO.editar(empleado);
+            //---------------------------------------------------------------
+              Departamento departamento = new Departamento() ;
+              DepartamentoDAO departamentoDAO = new DepartamentoDAO();
+              departamento = departamentoDAO.buscar(option);
+              empleado.setIdDepartamento(departamento);
+            //----------------------------------------------------------------------------
+              Date fechaActual = new Date();
+              empleado.setFechaHoraModifica(new java.sql.Date(fechaActual.getTime()));
+	    //---------------------------------------------------------------------------  
+              EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+              empleadoDAO.editar(empleado);
         } catch (Exception e) {
+                 System.out.println("ERROR EN actualizar(): "+e) ;
         }
-        return "consultaEmpleado.xhtml";
+        return "consultaEmpleados.xhtml";
     }
 
     // eliminar un empleado
@@ -149,7 +168,7 @@ public class EmpleadoBean {
             System.out.println("Empleado eliminado..");
         } catch (Exception e) {
         }
-        return "consultaEmpleado.xhtml";
+        return "consultaEmpleados.xhtml";
     }
 
 }

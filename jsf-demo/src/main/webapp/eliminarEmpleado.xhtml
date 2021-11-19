@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="utf-8" name="viewport"
+              content="width=device-width, initial-scale=1"
+              http-equiv="X-UA-Conpatible" />
+        <title>Nuevo Empleado</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2" cellspacing="20" border="1">
+                <f:facet name="header">
+                    <h:outputText value="Nuevo Empleado"></h:outputText>
+                </f:facet>
+
+                <h:outputText value="Tipodocumento:"></h:outputText>
+              
+                <h:selectOneMenu value="#{empleado.documentoTipo}" disabled="true">
+   			<f:selectItem itemValue="RC" itemLabel="RC" />
+   			<f:selectItem itemValue="TI" itemLabel="T_IDENTIDAD" />
+   			<f:selectItem itemValue="CC" itemLabel="CEDULA" />
+                        <f:selectItem itemValue="CE" itemLabel="C_EXTRANJERIA" />
+   		</h:selectOneMenu>
+                
+                <h:outputText value="Numerodocumento:"></h:outputText>
+                <h:inputText value="#{empleado.documentoNumero}" disabled="true"></h:inputText>
+
+                <h:outputText value="Nombres:"></h:outputText>
+                <h:inputText value="#{empleado.nombres}" disabled="true"></h:inputText>
+
+                <h:outputText value="Apellidos:"></h:outputText>
+                <h:inputText value="#{empleado.apellidos}" disabled="true"></h:inputText>
+
+                <h:outputText value="Ciudad:"></h:outputText>
+                <h:inputText value="#{empleado.ciudad}" disabled="true"></h:inputText>
+
+                <h:outputText value="Direccion:"></h:outputText>
+                <h:inputText value="#{empleado.direccion}" disabled="true"></h:inputText>
+
+                <h:outputText value="Email:"></h:outputText>
+                <h:inputText value="#{empleado.correoElectronico}" disabled="true"></h:inputText>
+
+                <h:outputText value="Telefono:"></h:outputText>
+                <h:inputText value="#{empleado.telefono}" disabled="true"></h:inputText>
+
+                <h:selectOneMenu value="#{empleadoBean.option}" disabled="true">
+                    <f:selectItems value="#{empleadoBean.obtenerDeptos()}" var="c"
+                                   itemLabel="#{c.elnombre}" itemValue="#{c.id}" />
+                </h:selectOneMenu>
+
+                <f:facet name="footer">
+                    <h:commandButton action="#{empleadoBean.eliminar(empleado.idempleados)}" value="Confimar_Eliminar"></h:commandButton>
+                </f:facet>
+
+            </h:panelGrid>
+
+        </h:form>
+
+    </h:body>
+</html>

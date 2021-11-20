@@ -126,4 +126,8 @@ public void setOption(String option) {
       return "consultaDepartamento.xhtml";
  }
  
+ public String menu() { 
+   return "menucrudjsf.xhtml";
+ }
+ 
 }

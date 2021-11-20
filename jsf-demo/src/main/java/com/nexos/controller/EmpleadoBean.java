@@ -170,5 +170,9 @@ public class EmpleadoBean {
         }
         return "consultaEmpleados.xhtml";
     }
+    
+    public String menu() { 
+       return "menucrudjsf.xhtml";
+    }
 
 }

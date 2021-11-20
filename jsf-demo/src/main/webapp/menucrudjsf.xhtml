@@ -1,21 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-     xmlns:h="http://java.sun.com/jsf/html"
-     xmlns:p="http://primefaces.org/ui">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-   <title>#{menuBean.message}</title>
-</h:head>
+    <h:head>
+       <script name="jquery/jquery.js" library="primefaces"></script>
+       <title>#{menuBean.message}</title>
+    </h:head>
 
-<h:body>
-   <p:panel id="horizontal" header="MENU JSF CRUD PRIMEFACES." toggleable="true" toggleOrientation="horizontal">
-      <h:panelGrid columns="2" cellpadding="10">
-         <img src="#{menuBean.path}"/>
+    <h:body>
+        <p:panel id="horizontal" header="MENU JSF CRUD PRIMEFACES." toggleable="true" toggleOrientation="horizontal">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:graphicImage value="resources/JsfCrud.jpg" />  
+                <h:form>
+	              <p:menu>
+                 	<p:menuitem value="DEPARTAMENTOS" action="#{menuBean.getDepartamento()}"></p:menuitem>
+	            	<p:separator/>
+		        <p:menuitem value="EMPLEADOS" action="#{menuBean.getEmpleado()}"></p:menuitem>
+	              </p:menu>
+                </h:form>
+            </h:panelGrid>
+        </p:panel>
 
-         <h:outputText value="#{menuBean.path}" />
-      </h:panelGrid>
-   </p:panel>
-
-</h:body>
+    </h:body>
 </html>
